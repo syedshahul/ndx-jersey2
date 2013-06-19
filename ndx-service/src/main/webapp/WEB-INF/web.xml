@@ -6,25 +6,25 @@
          xsi:schemaLocation="
 http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-<!--
+
     <context-param>
-        <param-name> Sample Jersey 2</param-name>
-        <param-value>classpath:applicationContext-rest.xml
-            classpath:applicationContext-manager.xml
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContent-rest.xml
+            classpath:applicationContent-manager.xml
         </param-value>
     </context-param>
--->
-     <!--
-     <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  -->
+
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>Jersey Web Application</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>com.example</param-value>
+            <param-value>org.jersey.sample.rest.impl</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

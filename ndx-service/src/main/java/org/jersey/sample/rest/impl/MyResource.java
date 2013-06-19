@@ -1,6 +1,9 @@
 package org.jersey.sample.rest.impl;
 
 import org.jersey.sample.rest.Service;
+import org.jersey.sample.service.Manager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,18 +14,18 @@ import javax.ws.rs.core.Response;
 /**
  * Root resource (exposed at "myresource" path)
  */
-//@org.springframework.stereotype.Service("myResource")
+@Component
 @Path("myresource")
-@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_ATOM_XML ,
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_ATOM_XML,
         MediaType.TEXT_PLAIN})
 public class MyResource implements Service {
 
-  //private Manager manager;
+  private Manager manager;
 
- /* @Autowired
+  @Autowired
   public void setManager(Manager manager) {
     this.manager = manager;
-  }*/
+  }
 
   /**
    * Method handling HTTP GET requests. The returned object will be sent
@@ -30,9 +33,10 @@ public class MyResource implements Service {
    *
    * @return String that will be returned as a text/plain response.
    */
+  @Override
   @GET
   public Response getIt() {
-    //return Response.status(Response.Status.OK).entity("Got it! : ".concat( manager.getIt())).build();
-    return Response.status(Response.Status.OK).entity("Got it! : ").build();
+    return Response.status(Response.Status.OK).entity("Got it! : ".concat(manager.getIt())).build();
+    //return Response.status(Response.Status.OK).entity("Got it! : ").build();
   }
 }

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Service;
 @Service("manager")
 public class ManagerImpl implements Manager {
   public String getIt() {
-    return "Got it- Manager ";
+    return " Manager ";
   }
 }
