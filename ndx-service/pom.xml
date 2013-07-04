@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>ndx-jersey2</artifactId>
-        <groupId>ndx-jersey2</groupId>
+        <groupId>org.jersey.sample</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -16,7 +16,12 @@
     <dependencies>
 
         <dependency>
-            <groupId>ndx-jersey2</groupId>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jaxb-annotations</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jersey.sample</groupId>
             <artifactId>ndx-manager</artifactId>
         </dependency>
 
@@ -26,9 +31,14 @@
         </dependency>
 
 
-        <!--  <dependency>
+        <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>jsr311-api</artifactId>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
         </dependency>-->
 
         <dependency>
@@ -37,9 +47,8 @@
 
         </dependency>
         <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>

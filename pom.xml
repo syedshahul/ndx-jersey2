@@ -2,35 +2,55 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ndx-jersey2</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jersey.sample</groupId>
     <artifactId>ndx-jersey2</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
+
     <modules>
         <module>ndx-manager</module>
         <module>ndx-service</module>
     </modules>
+
     <dependencyManagement>
 
         <dependencies>
 
             <dependency>
-                <groupId>ndx-jersey2</groupId>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-jaxb-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jersey.sample</groupId>
+                <artifactId>ndx-manager</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.jersey.sample</groupId>
                 <artifactId>ndx-service</artifactId>
                 <version>1.0</version>
             </dependency>
 
             <dependency>
-                <groupId>ndx-jersey2</groupId>
-                <artifactId>ndx-manager</artifactId>
-                <version>1.0</version>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>jsr311-api</artifactId>
+                <version>1.1.1</version>
             </dependency>
+
+            <!-- <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>2.0</version>
+            </dependency>-->
 
             <dependency>
                 <groupId>org.glassfish.jersey.containers</groupId>
-                <!-- if your container implements Servlet API older than 3.0, use "jersey-container-servlet-core"  -->
                 <artifactId>jersey-container-servlet</artifactId>
                 <version>${jersey.version}</version>
             </dependency>
@@ -41,9 +61,9 @@
                 <version>${jersey.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.glassfish.jersey.media</groupId>
-                <artifactId>jersey-media-json-jackson</artifactId>
-                <version>${jersey.version}</version>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-json-provider</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.jersey.media</groupId>
@@ -105,7 +125,24 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <source>${project.java.version}</source>
+                    <target>${project.java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
+        <jackson.version>2.2.2</jackson.version>
         <project.java.version>1.7</project.java.version>
         <maven.version>3.0.3</maven.version>
         <jersey.version>2.0</jersey.version>
